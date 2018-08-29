@@ -3,6 +3,7 @@ import React, {
 } from 'react'
 
 import {
+  AppRegistry,
   NativeModules,
   TouchableOpacity,
 } from 'react-native'
@@ -50,6 +51,14 @@ class RNAccountKit {
       options.countryWhitelist = undefined;
     }
 
+    if ("advancedUI" in options) {
+      for (let [key, View] of Object.entries(options.advancedUI)) {
+        const registryKey = `RNAccountKit_${key}`;
+        AppRegistry.registerComponent(registryKey, () => View);
+        options.advancedUI[key] = registryKey;
+      }
+    }
+
     for (let key of Object.keys(options)) {
       options[key] || delete options[key]
     }
@@ -59,6 +68,7 @@ class RNAccountKit {
       ...options,
     }
 
+    console.log(configOptions);
     return RNAccountKitNative.configure(configOptions)
   }
 

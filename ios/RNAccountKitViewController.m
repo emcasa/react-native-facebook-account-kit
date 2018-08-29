@@ -34,6 +34,9 @@
     if(self.theme != nil) {
         viewController.theme = self.theme;
     }
+    if (self.advancedUIManager != nil) {
+        viewController.advancedUIManager = self.advancedUIManager;
+    }
     if (self.countryWhitelist != nil) {
         viewController.whitelistedCountryCodes = self.countryWhitelist;
     }

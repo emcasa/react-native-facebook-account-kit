@@ -2,6 +2,7 @@
 //  RNAccountKit.m
 //
 
+#import "RNAccountKitAdvancedUIManager.h"
 #import "RNAccountKit.h"
 #import <React/RCTBridge.h>
 #import "RNAccountKitViewController.h"
@@ -13,6 +14,8 @@
     AKFAccountKit *_accountKit;
 }
 
+@synthesize bridge = _bridge;
+
 RCT_EXPORT_MODULE();
 
 
@@ -23,6 +26,7 @@ RCT_EXPORT_METHOD(login:(NSString *)type
     @try {
         RNAccountKitViewController* a = [[RNAccountKitViewController alloc] initWithAccountKit: [self getAccountKit]];
         a.theme = [self getTheme];
+        a.advancedUIManager = [self getAdvancedUIManager];
         a.countryWhitelist = [self.options valueForKey:@"countryWhitelist"];
         a.countryBlacklist = [self.options valueForKey:@"countryBlacklist"];
         a.defaultCountry = [self.options valueForKey:@"defaultCountry"];
@@ -139,6 +143,14 @@ RCT_EXPORT_METHOD(getCurrentAccount: (RCTPromiseResolveBlock)resolve
         }
     }
     return theme;
+}
+
+- (RNAccountKitAdvancedUIManager*) getAdvancedUIManager {
+    NSObject *options = [self.options objectForKey:@"advancedUI"];
+    if (options == nil) {
+        return nil;
+    }
+    return [[RNAccountKitAdvancedUIManager alloc] initWithBridge:_bridge options:options];
 }
 
 - (AKFAccountKit*) getAccountKit
