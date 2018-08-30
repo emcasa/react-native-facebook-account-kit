@@ -1,7 +1,6 @@
 #import "RNAccountKitAdvancedUIManager.h"
-
+#import "RNAccountKitUIView.h"
 #import <React/RCTBridge.h>
-#import <React/RCTRootView.h>
 
 @implementation RNAccountKitAdvancedUIManager
 {
@@ -47,10 +46,8 @@
 
 - (nonnull UIView *)_reactViewForState:(NSString *__nonnull)moduleName
 {
-    RCTRootView *view = [[RCTRootView alloc] initWithBridge:self.bridge
-                                             moduleName:moduleName
-                                             initialProperties:nil];
-    return view;
+    return [[RNAccountKitUIView alloc] initWithBridge:self.bridge
+                                       moduleName:moduleName];
 }
 
 @end

@@ -122,6 +122,7 @@
 
 - (void)viewControllerDidCancel:(UIViewController<AKFViewController> *)viewController
 {
+    NSLog(@"canceled");
     if (_resolve) {
         _resolve(nil);
     }
