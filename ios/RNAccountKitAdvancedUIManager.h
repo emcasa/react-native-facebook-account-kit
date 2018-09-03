@@ -8,7 +8,6 @@
 @property(nonatomic, strong, nullable) NSString *headerId;
 @property(nonatomic, strong, nullable) NSString *bodyId;
 @property(nonatomic, strong, nullable) NSString *actionBarId;
-@property(nonatomic, strong) NSArray<UIView *> *mountedViews;
 
 - (instancetype) initWithBridge: (RCTBridge *__nonnull)bridge options:(NSObject *__nonnull)options;
 

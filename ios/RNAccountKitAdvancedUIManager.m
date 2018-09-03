@@ -41,7 +41,6 @@
 - (nullable UIView *)actionBarViewForState:(AKFLoginFlowState)state
 {
     return _actionBarId != nil ? [self _reactViewForState:_actionBarId] : nil;
-    
 }
 
 - (nonnull UIView *)_reactViewForState:(NSString *__nonnull)moduleName
