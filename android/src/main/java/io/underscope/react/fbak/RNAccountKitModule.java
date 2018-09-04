@@ -258,6 +258,12 @@ public class RNAccountKitModule extends ReactContextBaseJavaModule implements Ac
             configurationBuilder.setDefaultCountryCode(this.options.getString("defaultCountry"));
         }
 
+        if (this.options.hasKey("advancedUI")) {
+            configurationBuilder.setUIManager(
+                    new RNAccountKitAdvancedUIManager(this.options.getMap("advancedUI"))
+            );
+        }
+
         return configurationBuilder;
     }
 
