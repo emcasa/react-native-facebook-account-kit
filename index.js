@@ -56,7 +56,7 @@ class RNAccountKit {
         const View = options.advancedUI[key];
         const registryKey = `RNAccountKit_${key}`;
         if (View) {
-          AppRegistry.registerComponent(registryKey, () => options.advanced);
+          AppRegistry.registerComponent(registryKey, () => View);
           options.advancedUI[key] = registryKey;
         }
       }
@@ -176,7 +176,7 @@ export const LoginState = {
   Resend: 'RESEND'
 };
 
-export const TextPosition {
+export const TextPosition = {
   Top: 0,
   Bottom: 1
 };
