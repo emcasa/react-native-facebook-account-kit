@@ -12,3 +12,4 @@
 - (instancetype) initWithBridge: (RCTBridge *__nonnull)bridge options:(NSObject *__nonnull)options;
 
 @end
+

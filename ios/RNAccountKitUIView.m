@@ -5,12 +5,13 @@
 
 - (instancetype)initWithBridge:(RCTBridge *__nonnull)bridge
                     moduleName:(NSString *__nonnull)moduleName
+             initialProperties:(NSDictionary *__nullable)initialProperties
 {
     self = [super init];
     if (self) {
         self.subView = [[RCTRootView alloc] initWithBridge:bridge
                                             moduleName:moduleName
-                                            initialProperties:nil];
+                                            initialProperties:initialProperties];
         self.subView.sizeFlexibility = RCTRootViewSizeFlexibilityWidthAndHeight;
         self.subView.delegate = self;
         [self addSubview:self.subView];

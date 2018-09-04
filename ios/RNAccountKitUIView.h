@@ -8,6 +8,7 @@
 @property (nonatomic, strong) RCTRootView *subView;
 
 - (instancetype)initWithBridge:(RCTBridge *__nonnull)bridge
-                    moduleName:(NSString *__nonnull)moduleName;
+                    moduleName:(NSString *__nonnull)moduleName
+             initialProperties:(NSDictionary *__nullable)initialProperties;
 
 @end

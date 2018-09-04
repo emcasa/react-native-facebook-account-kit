@@ -52,10 +52,13 @@ class RNAccountKit {
     }
 
     if ("advancedUI" in options) {
-      for (let [key, View] of Object.entries(options.advancedUI)) {
+      for (let key of ["body", "header", "footer", "actionBar"]) {
+        const View = options.advancedUI[key];
         const registryKey = `RNAccountKit_${key}`;
-        AppRegistry.registerComponent(registryKey, () => View);
-        options.advancedUI[key] = registryKey;
+        if (View) {
+          AppRegistry.registerComponent(registryKey, () => options.advanced);
+          options.advancedUI[key] = registryKey;
+        }
       }
     }
 
@@ -154,5 +157,28 @@ export const StatusBarStyle = {
   Default: 0,
   LightContent: 1,
 }
+
+export const LoginState = {
+  None: 'NONE',
+  PhoneInput: 'PHONE_INPUT',
+  EmailInput: 'EMAIL_INPUT',
+  CodeInput: 'CODE_INPUT',
+  VerifyingEmail: 'EMAIL_VERIFY',
+  SendingCode: 'SENDING_CODE',
+  SentCode: 'SENT_CODE',
+  VerifyingCode: 'VERIFYING_CODE',
+  Verified: 'VERIFIED',
+  Error: 'ERROR',
+  // States enumerated on com.facebook.accountkit.ui.LoginFlowState (android only)
+  AccountVerified: 'ACCOUNT_VERIFIED',
+  ConfirmInstantVerificationLogin: 'CONFIRM_INSTANT_VERIFICATION_LOGIN',
+  ConfirmAccountVerified: 'CONFIRM_ACCOUNT_VERIFIED',
+  Resend: 'RESEND'
+};
+
+export const TextPosition {
+  Top: 0,
+  Bottom: 1
+};
 
 export default AccountKit
