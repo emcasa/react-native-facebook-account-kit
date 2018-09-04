@@ -10,11 +10,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.facebook.react.ReactApplication;
-import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 
 public class RNAccountKitFragment extends Fragment {
@@ -70,7 +68,7 @@ public class RNAccountKitFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (getReactNativeHost().hasInstance()) {
+        if (getReactNativeHost().hasInstance() && getReactActivity() != null) {
             getReactNativeHost().getReactInstanceManager().onHostResume(getReactActivity(), (DefaultHardwareBackBtnHandler) getReactActivity());
         }
     }
@@ -78,7 +76,7 @@ public class RNAccountKitFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        if (getReactNativeHost().hasInstance()) {
+        if (getReactNativeHost().hasInstance() && getReactActivity() != null) {
             getReactNativeHost().getReactInstanceManager().onHostPause(getReactActivity());
         }
     }
@@ -90,28 +88,10 @@ public class RNAccountKitFragment extends Fragment {
             reactRootView.unmountReactApplication();
             reactRootView = null;
         }
-        if (getReactNativeHost().hasInstance()) {
-            ReactInstanceManager reactInstanceMgr = getReactNativeHost().getReactInstanceManager();
-
-            // onDestroy may be called on a ReactFragment after another ReactFragment has been
-            // created and resumed with the same React Instance Manager. Make sure we only clean up
-            // host's React Instance Manager if no other React Fragment is actively using it.
-            if (reactInstanceMgr.getLifecycleState() != LifecycleState.RESUMED) {
-                reactInstanceMgr.onHostDestroy(getReactActivity());
-                getReactNativeHost().clear();
-            }
-        }
     }
 
     // endregion
 
-    /**
-     * Get the {@link ReactNativeHost} used by this app. By default, assumes
-     * {@link Activity#getApplication()} is an instance of {@link ReactApplication} and calls
-     * {@link ReactApplication#getReactNativeHost()}. Override this method if your application class
-     * does not implement {@code ReactApplication} or you simply have a different mechanism for
-     * storing a {@code ReactNativeHost}, e.g. as a static field somewhere.
-     */
     protected ReactNativeHost getReactNativeHost() {
         return ((ReactApplication) getActivity().getApplication()).getReactNativeHost();
     }
