@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.app.Fragment;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +18,8 @@ import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 
 public class RNAccountKitFragment extends Fragment {
-    public static final String ARG_COMPONENT_NAME = "componentName";
-    public static final String ARG_LAUNCH_OPTIONS = "launchOptions";
+    public static final String ARG_COMPONENT_NAME = "arg_component_name";
+    public static final String ARG_LAUNCH_OPTIONS = "arg_launch_options";
 
     private String componentName;
     private Bundle launchOptions;

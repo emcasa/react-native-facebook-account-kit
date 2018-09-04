@@ -47,7 +47,7 @@
 {
     switch (state) {
         case AKFLoginFlowStateNone: return @"NONE";
-        case AKFLoginFlowStatePhoneNumberInput: return @"PHONE_INPUT";
+        case AKFLoginFlowStatePhoneNumberInput: return @"PHONE_NUMBER_INPUT";
         case AKFLoginFlowStateEmailInput: return @"EMAIL_INPUT";
         case AKFLoginFlowStateEmailVerify: return @"EMAIL_VERIFY";
         case AKFLoginFlowStateSendingCode: return @"SENDING_CODE";
@@ -62,8 +62,9 @@
 - (nonnull UIView *)_reactViewForState:(NSString *__nonnull)moduleName
                                  state:(AKFLoginFlowState)state
 {
-    NSDictionary *props = [NSDictionary alloc];
-    [props setValue:[self _stringForLoginState:state] forKey:@"loginState"];
+    NSDictionary *props = @{
+        @"loginState": [self _stringForLoginState:state]
+    };
     return [[RNAccountKitUIView alloc] initWithBridge:self.bridge
                                        moduleName:moduleName
                                        initialProperties:props];

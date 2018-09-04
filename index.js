@@ -160,7 +160,7 @@ export const StatusBarStyle = {
 
 export const LoginState = {
   None: 'NONE',
-  PhoneInput: 'PHONE_INPUT',
+  PhoneInput: 'PHONE_NUMBER_INPUT',
   EmailInput: 'EMAIL_INPUT',
   CodeInput: 'CODE_INPUT',
   VerifyingEmail: 'EMAIL_VERIFY',

@@ -33,31 +33,33 @@ public class RNAccountKitAdvancedUIManager extends BaseUIManager {
     }
   }
 
+
   private RNAccountKitAdvancedUIManager(final Parcel source) {
     super(source);
     this.bodyComponentId = source.readString();
     this.headerComponentId = source.readString();
     this.footerComponentId = source.readString();
-    String value = source.readString();
-    this.textPosition = value == null ? null : TextPosition.valueOf(value);
   }
 
   @Override
   @Nullable
   public Fragment getBodyFragment(final LoginFlowState state) {
-    return bodyComponentId == null ? null : RNAccountKitFragment.create(bodyComponentId, launchOptions(state));
+    if (bodyComponentId.isEmpty()) return null;
+    return RNAccountKitFragment.create(bodyComponentId, launchOptions(state));
   }
 
   @Override
   @Nullable
   public Fragment getHeaderFragment(final LoginFlowState state) {
-    return headerComponentId == null ? null : RNAccountKitFragment.create(headerComponentId, launchOptions(state));
+    if (headerComponentId.isEmpty()) return null;
+    return RNAccountKitFragment.create(headerComponentId, launchOptions(state));
   }
 
   @Override
   @Nullable
   public Fragment getFooterFragment(final LoginFlowState state) {
-    return footerComponentId == null ? null : RNAccountKitFragment.create(footerComponentId, launchOptions(state));
+    if (footerComponentId.isEmpty()) return null;
+    return RNAccountKitFragment.create(footerComponentId, launchOptions(state));
   }
 
   private Bundle launchOptions(final LoginFlowState state) {
@@ -72,7 +74,6 @@ public class RNAccountKitAdvancedUIManager extends BaseUIManager {
     dest.writeString(bodyComponentId);
     dest.writeString(headerComponentId);
     dest.writeString(footerComponentId);
-    dest.writeString(textPosition == null ? null : textPosition.name());
   }
 
   public static final Creator<RNAccountKitAdvancedUIManager> CREATOR
@@ -88,3 +89,4 @@ public class RNAccountKitAdvancedUIManager extends BaseUIManager {
     }
   };
 }
+    

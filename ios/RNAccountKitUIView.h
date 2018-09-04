@@ -9,6 +9,6 @@
 
 - (instancetype)initWithBridge:(RCTBridge *__nonnull)bridge
                     moduleName:(NSString *__nonnull)moduleName
-             initialProperties:(NSDictionary *__nullable)initialProperties;
+             initialProperties:(NSDictionary *)initialProperties;
 
 @end
