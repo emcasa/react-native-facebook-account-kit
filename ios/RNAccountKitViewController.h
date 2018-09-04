@@ -7,8 +7,7 @@
 @interface RNAccountKitViewController : UIViewController<AKFViewControllerDelegate>
 
 @property(nonatomic, strong) RNAccountKitViewController *instance;
-@property(nonatomic, strong) AKFTheme *theme;
-@property(nonatomic, strong) RNAccountKitAdvancedUIManager *advancedUIManager;
+@property(nonatomic, strong) RNAccountKitAdvancedUIManager *uiManager;
 @property(nonatomic, strong) NSArray<NSString *> *countryWhitelist;
 @property(nonatomic, strong) NSArray<NSString *> *countryBlacklist;
 @property(nonatomic, strong) NSString *defaultCountry;

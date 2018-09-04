@@ -12,14 +12,19 @@
     _actionController = actionController;
 }
 
-- (instancetype) initWithBridge:(RCTBridge *__nonnull)bridge options:(NSObject *__nonnull)options
+- (instancetype) initWithBridge:(RCTBridge *__nonnull)bridge
+                          theme:(AKFTheme *__nullable)theme
+                        options:(NSObject *__nullable)options
 {
     self = [super init];
     self.bridge = bridge;
-    _footerId = [options valueForKey:@"footer"];
-    _headerId = [options valueForKey:@"header"];
-    _bodyId = [options valueForKey:@"body"];
-    _actionBarId = [options valueForKey:@"actionBar"];
+    self.theme = theme;
+    if (options) {
+        _footerId = [options valueForKey:@"footer"];
+        _headerId = [options valueForKey:@"header"];
+        _bodyId = [options valueForKey:@"body"];
+        _actionBarId = [options valueForKey:@"actionBar"];
+    }
     return self;
 }
 
@@ -56,6 +61,8 @@
         case AKFLoginFlowStateVerifyingCode: return @"VERIFYING_CODE";
         case AKFLoginFlowStateVerified: return @"VERIFIED";
         case AKFLoginFlowStateError: return @"ERROR";
+        case AKFLoginFlowStateResendCode: return @"RESEND";
+        case AKFLoginFlowStateCountryCode: return @"COUNTRY_CODE";
     }
 }
 

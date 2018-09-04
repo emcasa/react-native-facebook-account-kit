@@ -48,10 +48,4 @@
     return NO;
 }
 
-- (void)dealloc
-{
-    NSLog(@"DEALLOC");
-    self.subView = nil;
-}
-
 @end

@@ -31,11 +31,8 @@
 - (void)_prepareLoginViewController:(UIViewController<AKFViewController> *)viewController
 {
     viewController.delegate = self;
-    if(self.theme != nil) {
-        viewController.theme = self.theme;
-    }
-    if (self.advancedUIManager != nil) {
-        viewController.advancedUIManager = self.advancedUIManager;
+    if (self.uiManager != nil) {
+        viewController.uiManager = self.uiManager;
     }
     if (self.countryWhitelist != nil) {
         viewController.whitelistedCountryCodes = self.countryWhitelist;
@@ -122,7 +119,6 @@
 
 - (void)viewControllerDidCancel:(UIViewController<AKFViewController> *)viewController
 {
-    NSLog(@"canceled");
     if (_resolve) {
         _resolve(nil);
     }
